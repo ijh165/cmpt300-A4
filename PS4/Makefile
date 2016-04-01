@@ -24,4 +24,4 @@ transfer:
 	scp -P 2222 $(TARGET) root@localhost:$(TARGET)
 
 killqemu:
-	killall qemu-system-x86
+	killall qemu-system-x86_64
