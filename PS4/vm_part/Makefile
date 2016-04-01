@@ -1,11 +1,9 @@
-# Makefile for building multi-file application
-# by Brian Fraser
+#  Filename: Makefile
+#  Created by Ivan Jonathan Hoo
+#  Copyright (c) 2016 Ivan Jonathan Hoo. All rights reserved.
 
-# final executable to build:
 TARGET= fibonacci
-# .o files to link in (for all .c files)
 OBJS = fibonacci.o
-
 
 CFLAGS = -Wall -g -std=c99 -Werror -pthread -static -lrt
 CC_C = gcc
@@ -21,3 +19,9 @@ $(TARGET): $(OBJS)
 clean:
 	rm -f $(TARGET)
 	rm -f $(OBJS)
+
+transfer:
+	scp -P 2222 $(TARGET) root@localhost:$(TARGET)
+
+killqemu:
+	killall qemu-system-x86
