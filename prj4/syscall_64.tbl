@@ -332,6 +332,7 @@ common  array_stats             sys_array_stats
 322	64	execveat		stub_execveat
 330     common  cs300_test              sys_cs300_test
 331     common  array_stats             sys_array_stats
+332     common  process_ancestors       sys_process_ancestors
 
 #
 # x32-specific system call numbers start at 512 to avoid cache impact
