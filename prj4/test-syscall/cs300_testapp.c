@@ -42,15 +42,17 @@ int main(int argc, char *argv[])
 	/*int result = syscall(_CS300_TEST_, 999);*/
 
 	//testing array_stats.c
-	array_stats_t stats;
+	/*array_stats_t stats;
 	long data[10] = {2,-1,10,6,9,5,21,4,7,3};
 	int result = syscall(_ARRAY_STATS_TEST_, &stats, data, 10);
 	printf("Min: %ld\n", stats.min);
 	printf("Max: %ld\n", stats.max);
-	printf("Sum: %ld\n", stats.sum);
+	printf("Sum: %ld\n", stats.sum);*/
 
 	//testing process_ancestors.c
-	/*int result = syscall(_PROCESS_ANCESTORS_TEST_, NULL, 5, NULL);*/
+	process_info_t arr[10];
+	long slots_filled = 0;
+	int result = syscall(_PROCESS_ANCESTORS_TEST_, arr, 10, &slots_filled);
 
 	printf("\nRising to user level w/ result = %d\n\n", result);
 	
