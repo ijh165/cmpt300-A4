@@ -31,10 +31,24 @@ long num_siblings;
 /* # sibling process has */
 };
 
+struct array_stats{
+	long min;
+	long max;
+	long sum;
+};
+
 int main(int argc, char *argv[]){
 	printf("\nDiving to kernel level\n\n");
-	int result = syscall(_CS300_TEST_, NULL, 5, NULL);
+	//int result = syscall(_CS300_TEST_, NULL, 5, NULL);
+
+	
+		long data[5] = {1, 3, -1, 9, 7};
+	struct array_stats stats;
+		
+	int result = syscall(331, &stats, data, 5);
 	printf("\nRising to user level w/ result = %d\n\n", result);
+	 
+		printf("%li %li %li\n", stats.min, stats.max, stats.sum);
 	
 	return 0;
 }
