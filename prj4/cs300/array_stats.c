@@ -1,7 +1,7 @@
-#include <asm/errno.h>
-#include <linux/kernel.h>
 #include "array_stats.h"
+#include <linux/kernel.h>
 #include <asm/uaccess.h>
+#include <asm/errno.h>
 
 asmlinkage long sys_array_stats(struct array_stats *stats, long data[], long size)
 {

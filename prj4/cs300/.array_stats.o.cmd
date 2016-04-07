@@ -3,9 +3,7 @@ cmd_cs300/array_stats.o := gcc -Wp,-MD,cs300/.array_stats.o.d  -nostdinc -isyste
 source_cs300/array_stats.o := cs300/array_stats.c
 
 deps_cs300/array_stats.o := \
-  arch/x86/include/uapi/asm/errno.h \
-  include/uapi/asm-generic/errno.h \
-  include/uapi/asm-generic/errno-base.h \
+  cs300/array_stats.h \
   include/linux/kernel.h \
     $(wildcard include/config/lbdaf.h) \
     $(wildcard include/config/preempt/voluntary.h) \
@@ -146,7 +144,9 @@ deps_cs300/array_stats.o := \
     $(wildcard include/config/kmemcheck.h) \
   include/linux/errno.h \
   include/uapi/linux/errno.h \
-  cs300/array_stats.h \
+  arch/x86/include/uapi/asm/errno.h \
+  include/uapi/asm-generic/errno.h \
+  include/uapi/asm-generic/errno-base.h \
   arch/x86/include/asm/uaccess.h \
     $(wildcard include/config/x86/intel/usercopy.h) \
     $(wildcard include/config/debug/strict/user/copy/checks.h) \

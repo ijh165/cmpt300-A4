@@ -4,8 +4,6 @@
 #include <linux/cred.h>
 #include <asm/uaccess.h>
 #include <asm/errno.h>
-/*#include <string.h>*/
-
 
 asmlinkage long sys_process_ancestors(struct process_info info_array[], long size, long* num_filled)
 {
@@ -42,20 +40,25 @@ asmlinkage long sys_process_ancestors(struct process_info info_array[], long siz
 			sibling_count++;
 		}
 
-		printk("pid: %d, name: %s, uid: %li, nvcsw: %li, nivscw: %li, num_children: %li, num_siblings: %li\n", 
-			curr_task->pid, curr_task->comm, (long)(curr_task->cred)->uid.val, curr_task->nvcsw, curr_task->nivcsw, children_count, sibling_count);
+		printk("pid: %li, name: %s, state: %li, uid: %li, nvcsw: %li, nivscw: %li, num_children: %li, num_siblings: %li\n",
+			(long) curr_task->pid, curr_task->comm, curr_task->state, (long) (curr_task->cred)->uid.val, curr_task->nvcsw, curr_task->nivcsw, children_count, sibling_count);
 		
 		//store into info_array
 		if (tmp_num_filled < size) {
-			/*struct process_info item;
-			item.pid = curr_task.pid;
-			item.name = strdup(curr_task->comm);
-			item.uid = (long)(curr_task->cred)->uid.val;
-			item.nvcsw = curr_task.nvcsw;
-			item.nivcsw = curr_task.nivcsw;
+			//create new process_info struct
+			struct process_info item;
+			//store the info into the struct
+			item.pid = (long) curr_task->pid;
+			strcpy(item.name, curr_task->comm);
+			item.state = curr_task->state;
+			item.uid = (long) (curr_task->cred)->uid.val;
+			item.nvcsw = curr_task->nvcsw;
+			item.nivcsw = curr_task->nivcsw;
 			item.num_children = children_count;
 			item.num_siblings = sibling_count;
-			info_array[tmp_num_filled] = item;*/
+			//add the struct to info_array
+			info_array[tmp_num_filled] = item;
+			//incr tmp_num_filled
 			tmp_num_filled++;
 		}
 	}

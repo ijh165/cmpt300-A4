@@ -21,7 +21,7 @@ clean:
 	rm -f $(OBJS)
 
 transfer:
-	scp -P 2222 $(TARGET) root@localhost:$~
+	scp -P 2222 $(TARGET) root@localhost:$(TARGET)
 
 killqemu:
 	killall qemu-system-x86_64
