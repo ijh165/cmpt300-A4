@@ -3,7 +3,7 @@
 #include <asm/uaccess.h>
 #include <asm/errno.h>
 
-asmlinkage long sys_array_stats(struct array_stats *stats, long data[], long size)
+asmlinkage long sys_array_stats(struct array_stats* stats, long data[], long size)
 {
 	struct array_stats tmp_stats;
 	long i = 0;	
@@ -12,6 +12,7 @@ asmlinkage long sys_array_stats(struct array_stats *stats, long data[], long siz
 	if(size <= 0) {
 		return -EINVAL;
 	}
+	
 	if(!stats) {
 		return -EFAULT;
 	}
@@ -43,6 +44,6 @@ asmlinkage long sys_array_stats(struct array_stats *stats, long data[], long siz
 	}
 
 	printk("Min:%li Max:%li Sum:%li\n", stats->min, stats->max, stats->sum);
-
+	
 	return 0;		 
 }

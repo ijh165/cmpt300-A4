@@ -57,7 +57,9 @@ asmlinkage long sys_process_ancestors(struct process_info info_array[], long siz
 			item.num_children = children_count;
 			item.num_siblings = sibling_count;
 			//add the struct to info_array
-			info_array[tmp_num_filled] = item;
+			if(copy_to_user(&info_array[tmp_num_filled], &item, sizeof(struct process_info))) {
+				return -EFAULT;
+			}
 			//incr tmp_num_filled
 			tmp_num_filled++;
 		}
