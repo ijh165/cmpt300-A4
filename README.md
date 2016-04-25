@@ -1,2 +1,2 @@
 # custom-syscall
-A custom linux syscall that works on the kernel space.
+Custom linux system calls that run on the kernel space.
