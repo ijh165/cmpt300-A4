@@ -3,7 +3,7 @@ Custom linux system calls that run on the kernel space.
 
 # Team Members
 1. Ivan Jonathan Hoo, ihoo@sfu.ca
-2. Raymond Chan, rca71@yahoo.com
+2. Raymond Chan, rca71@sfu.ca
 
 # Files and Folders
 - The "kernel_code" folder contains the following files/folders from the (customized) Linux kernel folder: cs300/ folder, makefile, syscall_64.tbl
